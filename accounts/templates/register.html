@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Face Recognition</title>
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .camera_container {
+            margin-top: 20px;
+        }
+        #canvas {
+            display: none; /* Hide initially */
+        }
+        #message {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register with Face Recognition</h2>
+        <form id="register-form">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div class="camera_container">
+                <video id="video" width="100%" autoplay></video>
+                <button type="button" id="capture-button">Capture Face</button>
+                <canvas id="canvas" width="300" height="200"></canvas>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture-button');
+        const registerForm = document.getElementById('register-form');
+        const message = document.getElementById('message');
+    
+        let captureImage = null;
+    
+        // Access camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error('Error accessing the camera:', error);
+                message.innerHTML = 'Error accessing the camera. Ensure your camera is enabled and allowed.';
+            });
+    
+        // Capture Image
+        captureButton.addEventListener('click', () => {
+            if (!video.srcObject) {
+                message.innerHTML = 'Please allow access to the camera';
+                return;
+            }
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            captureImage = canvas.toDataURL('image/png');
+            message.innerHTML = 'Image captured';
+            canvas.style.display = 'block'; // Show canvas with captured image
+        });
+    
+        // Handle Form Submission
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            if (!captureImage) {
+                message.innerHTML = 'Please capture an image before registering';
+                return;
+            }
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            if (!username || !password) {
+                message.innerHTML = 'Please enter both username and password';
+                return;
+            }
+    
+            message.innerHTML = 'Registration in progress...';
+    
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('password', password);
+            formData.append('face_image', captureImage);
+    
+            try {
+                const response = await fetch('/register/', {
+                    method: 'POST',
+                    body: formData
+                });
+    
+                const data = await response.json();
+                if (data.status === 'success') {
+                    message.innerHTML = 'Registration successful!';
+                } else {
+                    message.innerHTML = data.message || 'Registration failed';
+                }
+            } catch (error) {
+                console.error('Error during registration:', error);
+                message.innerHTML = 'An error occurred. Please try again.';
+            }
+        });
+    </script>
+    
+</body>
+</html>
