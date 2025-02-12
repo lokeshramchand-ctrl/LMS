@@ -37,7 +37,6 @@ def assignment_list(request, course_id):
     assignments = course.assignments.all()
     return render(request, 'assignment_list.html', {'course': course, 'assignments': assignments})
 
-# Submit an assignment
 @login_required
 def submit_assignment(request, assignment_id):
     assignment = get_object_or_404(Assignment, id=assignment_id)
