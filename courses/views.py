@@ -15,7 +15,6 @@ def course_detail(request, course_id):
     modules = course.modules.all()
     return render(request, 'course_detail.html', {'course': course, 'modules': modules})
 
-# Enroll in a course
 @login_required
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
