@@ -75,7 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'face.wsgi.application'
 
 
-# Database
+# Databas
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
@@ -105,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -128,5 +127,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # React dev server
+    "http://localhost:5173", 
 ]
