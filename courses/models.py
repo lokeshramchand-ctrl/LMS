@@ -12,7 +12,6 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-# Module model (for course content)
 class Module(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='modules')
     title = models.CharField(max_length=200)
