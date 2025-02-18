@@ -19,14 +19,15 @@
 ---
 
 ## Checklist
-[] Define the problem statement and scope  
-✅ Gather requirements (functional & non-functional)  
-✅ Design system architecture and UI/UX  
-✅ Develop individual modules  
-✅ Perform unit, integration, and system testing  
-✅ Deploy the project and prepare documentation  
-✅ Monitor and maintain the system  
+- [ ] Define the problem statement and scope  
+- [ ] Gather requirements (functional & non-functional)  
+- [ ] Design system architecture and UI/UX  
+- [ ] Develop individual modules  
+- [ ] Perform unit, integration, and system testing  
+- [ ] Deploy the project and prepare documentation  
+- [ ] Monitor and maintain the system  
 
+---
 ---
 
 ## Phase 1: Requirements Analysis
