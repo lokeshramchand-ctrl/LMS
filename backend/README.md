@@ -1,2 +1,0 @@
-# potential-funicular
-# auth2

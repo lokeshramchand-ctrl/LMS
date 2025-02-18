@@ -3,12 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Course, Enrollment, Assignment, Submission
 from .forms import EnrollmentForm, SubmissionForm
 
-# List all courses
 def course_list(request):
     courses = Course.objects.all()
     return render(request, 'course_list.html', {'courses': courses})
 
-# View details of a course
 @login_required
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
