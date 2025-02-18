@@ -19,7 +19,7 @@
 ---
 
 ## Checklist
-- [ ] Define the problem statement and scope  
+- [x] Define the problem statement and scope  
 - [ ] Gather requirements (functional & non-functional)  
 - [ ] Design system architecture and UI/UX  
 - [ ] Develop individual modules  
