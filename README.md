@@ -44,10 +44,9 @@
 
 ## Architecture Design
 - **Frontend:** Flutter (for cross-platform compatibility)
-- **Backend:** Node.js with Express.js
+- **Backend:** Django
 - **Database:** MySQL (relational storage)
-- **Authentication:** Firebase Authentication
-- **Cloud Storage:** Firebase Storage (for course content)
+- **Authentication:** Face authetication with User Login
 - **API Communication:** RESTful APIs
 
 ## Database Schema
@@ -79,8 +78,6 @@
 
 ## Deployment Plan
 - Deploy backend on cloud hosting (AWS/GCP)
-- Use Firebase for authentication and storage
-- Host frontend on Firebase Hosting or Vercel
 - Set up CI/CD pipeline for automated deployments
 
 ## Maintenance & Support
