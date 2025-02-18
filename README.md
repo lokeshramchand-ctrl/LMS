@@ -50,11 +50,12 @@
 - **API Communication:** RESTful APIs
 
 ## Database Schema
-- Users (id, name, email, password, role)
-- Courses (id, title, description, instructor_id, content)
-- Enrollments (id, user_id, course_id, progress)
-- Assignments (id, course_id, title, due_date)
-- Submissions (id, assignment_id, user_id, file_path, score)
+- **Users** (id, username, email, password, role)
+- **Courses** (id, title, description, instructor_id, start_date, end_date)
+- **Modules** (id, course_id, title, content)
+- **Enrollments** (id, user_id, course_id, enrollment_date)
+- **Assignments** (id, course_id, title, description, submission_deadline)
+- **Submissions** (id, assignment_id, user_id, submission_file, grade)
 
 ## UI/UX Design
 - **Student Dashboard:** View enrolled courses, track progress
