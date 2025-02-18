@@ -11,9 +11,9 @@
 - [Phase 6: Maintenance](#phase-6-maintenance)
 
 ## Project Overview
-**Project Name:** Your Project Name  
-**Description:** A brief description of the project.  
-**Technology Stack:** List of technologies used (Flutter, Firebase, MySQL, etc.)  
+**Project Name:** LMS  
+**Description:** It is ultimate Learning Management System with lot of features to be added on .  
+**Technology Stack:** Django , Flutter , React , RestAPI , MySQL
 **Methodology:** Waterfall Model  
 
 ---
