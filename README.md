@@ -14,6 +14,7 @@
 - [Maintenance & Support](#maintenance--support)
 
 
+
 ## Project Overview
 **Project Name:** Learning Management System (LMS)  
 **Description:** The LMS is a comprehensive platform designed for educational institutions and corporate training programs. It provides course management, user authentication, progress tracking, and collaboration tools.  
@@ -28,6 +29,7 @@
 - Implement progress tracking and assessment features
 - Facilitate communication through discussion forums
 - Ensure secure authentication and role-based access control
+
 
 ## System Requirements
 ### Functional Requirements
