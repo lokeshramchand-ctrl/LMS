@@ -1,5 +1,6 @@
 # Learning Management System (LMS) Project Documentation
 
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Business Requirements](#business-requirements)
