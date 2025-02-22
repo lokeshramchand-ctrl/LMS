@@ -1,14 +1,15 @@
 from django.contrib import admin
 from django.urls import path
 
-from courses import views
+from courses import views as course_views
+from ai import views as ai_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('courses/', views.course_list, name='course_list'),
-    path('courses/<int:course_id>/', views.course_detail, name='course_detail'),
-    path('courses/<int:course_id>/enroll/', views.enroll_course, name='enroll_course'),
-    path('courses/<int:course_id>/assignments/', views.assignment_list, name='assignment_list'),
-    path('assignments/<int:assignment_id>/submit/', views.submit_assignment, name='submit_assignment'),
+    path('courses/', course_views.course_list, name='course_list'),
+    path('courses/<int:course_id>/', course_views.course_detail, name='course_detail'),
+    path('courses/<int:course_id>/enroll/', course_views.enroll_course, name='enroll_course'),
+    path('courses/<int:course_id>/assignments/', course_views.assignment_list, name='assignment_list'),
+    path('assignments/<int:assignment_id>/submit/', course_views.submit_assignment, name='submit_assignment'),
+    path('chat/', ai_views.chatbot, name='chatbot'),  # Fixed slash placement
 ]
-
