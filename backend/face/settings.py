@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'courses',
     'ai',
+    'authe',
+    'meetings',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
