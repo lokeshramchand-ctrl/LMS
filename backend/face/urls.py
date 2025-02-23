@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path
 
 from courses import views as course_views
 from ai import views as ai_views
 from authe import views as authe_views
+from meetings import views as meetings_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +16,5 @@ urlpatterns = [
     path('chat/', ai_views.chatbot, name='chatbot'),  
     path('register/', authe_views.register),
     path('login/', authe_views.login_user),
-    path("meetings/", include("meetings.urls")),
-
-  
+    path("meetings/", meetings_views.create_meeting, name="meetings"),  
 ]
