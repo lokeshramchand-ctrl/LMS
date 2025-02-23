@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Meeting</title>
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        #meeting-container {
+            width: 100%;
+            height: 80vh;
+            margin: auto;
+        }
+        #join-meeting {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        #join-meeting:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to Your Video Meeting</h2>
+    
+    <div id="meeting-container"></div>
+    
+    <button id="join-meeting">Join Meeting</button>
+
+    <script>
+        document.getElementById("join-meeting").addEventListener("click", function() {
+            const domain = "meet.jit.si";
+            const options = {
+                roomName: "LMS_Meeting_Room",
+                width: "100%",
+                height: "80vh",
+                parentNode: document.getElementById("meeting-container"),
+                userInfo: {
+                    displayName: "User"
+                }
+            };
+            const api = new JitsiMeetExternalAPI(domain, options);
+        });
+    </script>
+
+</body>
+</html>
