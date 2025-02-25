@@ -1,10 +1,8 @@
 body,
 html {
-  width: 100%;
-  height: 100%;
+
   margin: 0;
   padding: 0;
-  background-color: white;
   display: flex;
 }
 .entire {
@@ -23,7 +21,7 @@ html {
   background-color: #343332; /* Right side is grey */
 }
 
-.register-image img {
+.register-image {
   width: 60%;
   height: 60%;
   padding: 120px;
@@ -47,6 +45,7 @@ html {
   transform: rotateX(10deg) rotateY(-10deg);
   perspective: 1000px;
   box-shadow: 10px 10px 0 #000;
+  z-index: 1;
 }
 
 .input__container:hover {
@@ -118,7 +117,7 @@ html {
 .input_container {
   position: absolute;
   right: 10%; /* Distance from the right */
-  top: 55%;
+  top: 58%;
   background: #ffe0a8;
   padding: 20px;
   display: flex;
@@ -131,7 +130,9 @@ html {
   transform-style: preserve-3d;
   transform: rotateX(10deg) rotateY(-10deg);
   perspective: 1000px;
-  box-shadow: 10px 10px 0 #000;
+  box-shadow: 10px 10px 0 #000; 
+  z-index: 1;
+
 }
 
 .input_container:hover {

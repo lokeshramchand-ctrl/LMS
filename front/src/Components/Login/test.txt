@@ -25,10 +25,8 @@ const Login = () => {
             class="input_search"
             placeholder="Enter password"
           />
-          
         </div>
         <button>Login</button>
-
       </div>
       <div class= "right-contianer"></div>
 
