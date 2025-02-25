@@ -25,9 +25,13 @@ const Register = () => {
             class="input_search"
             placeholder="Enter password"
           />
+          
         </div>
+        <button>Button</button>
+
       </div>
       <div class= "right-contianer"></div>
+
     </div>
   );
 };
