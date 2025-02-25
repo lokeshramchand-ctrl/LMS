@@ -23,7 +23,7 @@ const Register = () => {
             type="text"
             name="username"
             class="input_search"
-            placeholder="Enter username"
+            placeholder="Enter password"
           />
         </div>
       </div>
