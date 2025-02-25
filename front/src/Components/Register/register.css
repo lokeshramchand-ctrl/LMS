@@ -118,7 +118,7 @@ html {
 .input_container {
   position: absolute;
   right: 10%; /* Distance from the right */
-  top: 65%;
+  top: 55%;
   background: #ffe0a8;
   padding: 20px;
   display: flex;
@@ -188,7 +188,7 @@ html {
 .input_container::before {
   content: "PASSWORD";
   position: absolute;
-  top: -15px;
+  top: -10px;
   left: 190px;
   background: #e9b50b;
   color: #000;
