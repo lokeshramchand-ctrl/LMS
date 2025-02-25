@@ -1,15 +1,17 @@
 import React from "react";
-
-import Login from "./Components/Login/login.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Components/Login/login";
+import Register from "./Components/Register/register";
 
 function App() {
-
   return (
-    <>
-      <Login />
-
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

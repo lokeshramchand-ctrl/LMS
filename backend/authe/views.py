@@ -11,43 +11,47 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 import json
 
-
 @csrf_exempt
-
 def register(request):
     if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        face_image_data = request.POST.get('face_image')
-
-        if not username:
-            return JsonResponse({'status': 'error', 'message': 'Username is required'})
-
-        if not password:
-            return JsonResponse({'status': 'error', 'message': 'Password is required'})
-
-        if not face_image_data:
-            return JsonResponse({'status': 'error', 'message': 'Face image is required'})
-
-        # Decode face image
         try:
-            face_image_data = face_image_data.split(",")[1]
-            face_image = ContentFile(base64.b64decode(face_image_data), name=f'{username}_.jpg')
-        except (IndexError, ValueError):
-            return JsonResponse({'status': 'error', 'message': 'Invalid face image format'})
+            data = json.loads(request.body)
+            username = data.get('username')
+            password = data.get('password')
+            face_image_data = data.get('face_image')
 
-        # Create user with password hashing
-        try:
-            hashed_password = make_password(password)  # Hash the password before saving
-            user = User.objects.create(username=username, password=hashed_password)
-        except IntegrityError:
-            return JsonResponse({'status': 'error', 'message': 'Username already taken'})
+            if not username:
+                return JsonResponse({'status': 'error', 'message': 'Username is required'})
 
-        # Save user's face image
-        UserImages.objects.create(user=user, face_image=face_image)
-        return JsonResponse({'status': 'success'})
+            if not password:
+                return JsonResponse({'status': 'error', 'message': 'Password is required'})
 
-    return render(request, 'register.html')
+            if not face_image_data:
+                return JsonResponse({'status': 'error', 'message': 'Face image is required'})
+
+            # Decode face image
+            try:
+                face_image_data = face_image_data.split(",")[1]  # Remove base64 prefix
+                face_image = ContentFile(base64.b64decode(face_image_data), name=f'{username}_.jpg')
+            except (IndexError, ValueError):
+                return JsonResponse({'status': 'error', 'message': 'Invalid face image format'})
+
+            # Create user with password hashing
+            try:
+                hashed_password = make_password(password)  # Hash the password before saving
+                user = User.objects.create(username=username, password=hashed_password)
+            except IntegrityError:
+                return JsonResponse({'status': 'error', 'message': 'Username already taken'})
+
+            # Save user's face image
+            UserImages.objects.create(user=user, face_image=face_image)
+
+            return JsonResponse({'status': 'success', 'message': 'User registered successfully'})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
 
 
 @csrf_exempt
