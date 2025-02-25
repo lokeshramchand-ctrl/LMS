@@ -3,13 +3,13 @@ import "./Register.css";
 
 const Register = () => {
   return (
-    <div className="Entire">
-      <div className="image-container">
+    <div className="entire">
+      <div className="left-container">
         <div className="register-image">
           <img src="./src/assets/1.png" alt="Register" />
         </div>
       </div>
-      <div className="right-container">
+      <div className="middle-container">
         <div class="input__container">
           <input
             type="text"
@@ -27,6 +27,7 @@ const Register = () => {
           />
         </div>
       </div>
+      <div class= "right-contianer"></div>
     </div>
   );
 };
