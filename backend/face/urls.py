@@ -14,7 +14,7 @@ urlpatterns = [
     path('courses/<int:course_id>/assignments/', course_views.assignment_list, name='assignment_list'),
     path('assignments/<int:assignment_id>/submit/', course_views.submit_assignment, name='submit_assignment'),
     path('chat/', ai_views.chatbot, name='chatbot'),  
-    path('register/', authe_views.register),
-    path('login/', authe_views.login_user),
+    path('api/register/', authe_views.register),
+    path('api/login/', authe_views.login_user),
     path("meetings/", meetings_views.create_meeting, name="meetings"),  
 ]
