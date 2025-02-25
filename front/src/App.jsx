@@ -1,12 +1,12 @@
 import React from "react";
 
-import Register from "./Components/Register/register.jsx";
+import Login from "./Components/Login/login.jsx";
 
 function App() {
 
   return (
     <>
-      <Register />
+      <Login />
 
     </>
   )
