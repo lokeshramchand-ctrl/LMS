@@ -305,7 +305,6 @@ html {
   scale: 0.95;
   box-shadow: 0 0 0 4px #e9b50b;
 }
-
 .animated-button:hover .circle {
   width: 220px;
   height: 220px;
