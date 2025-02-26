@@ -111,3 +111,5 @@ def login_user(request):
 
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON'})
+        
+    return JsonResponse({'status': 'error', 'message': 'GET method not allowed'}, status=405)

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./login.css";
 const Login = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -15,7 +16,6 @@ const Login = () => {
           videoRef.current.srcObject = stream;
         }
       })
-      System.out.println ("Login Suces")
       .catch((error) => {
         console.error("Error accessing the camera:", error);
         setMessage(
@@ -74,20 +74,35 @@ const Login = () => {
   };
 
   return (
-    <div className="entire">
+<div className="entire">
       <form onSubmit={handleSubmit}>
         <div className="left-container">
           <div className="register-image">
             <video ref={videoRef} autoPlay></video>
-            <button type="capture-button" onClick={captureFace}>
-              Capture Face
+            <button type="animated-button" onClick={captureFace}>
+               <svg
+              viewBox="0 0 24 24"
+              class="arr-2"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">Capture</span>
+            <span class="circle"></span>
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
             </button>
             <canvas
               ref={canvasRef}
               width="300"
               height="200"
               style={{ display: "none" }}
-            ></canvas>
+            ></canvas>{" "}
           </div>
         </div>
 
@@ -112,11 +127,27 @@ const Login = () => {
               required
             />
           </div>
+          <button type="submit" className="animated-button">
 
-          <button type="submit">Login</button>
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-2"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">Login</span>
+            <span class="circle"></span>
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </button>
         </div>
       </form>
-      <div id="message">{message}</div>
     </div>
   );
 };
