@@ -9,6 +9,7 @@ const Register = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Access the camera
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
@@ -83,57 +84,31 @@ const Register = () => {
   };
 
   return (
-    <div className="entire">
+    <div className="register-container">
+      <h2>Register with Face Recognition</h2>
       <form onSubmit={handleSubmit}>
-        <div className="left-container">
-          <div className="register-image">
-            <video ref={videoRef} autoPlay></video>
-            <button type="button" onClick={captureFace} className="animated-button">
-              <svg viewBox="0 0 24 24" className="arr-2" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-              <span className="text">Capture</span>
-              <span className="circle"></span>
-              <svg viewBox="0 0 24 24" className="arr-1" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-            <canvas ref={canvasRef} width="300" height="200" style={{ display: "none" }}></canvas>
-          </div>
-        </div>
-
-        <div className="middle-container">
-          <div className="input__container">
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              className="input__search"
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input_container">
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              className="input_search"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="animated-button">
-            <svg viewBox="0 0 24 24" className="arr-2" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-            </svg>
-            <span className="text">Register</span>
-            <span className="circle"></span>
-            <svg viewBox="0 0 24 24" className="arr-1" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-            </svg>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <div className="camera_container">
+          <video ref={videoRef} width="100%" autoPlay></video>
+          <button type="button" onClick={captureFace}>
+            Capture Face
           </button>
+          <canvas ref={canvasRef} width="300" height="200" style={{ display: "none" }}></canvas>
         </div>
+        <button type="submit">Register</button>
       </form>
       <div id="message">{message}</div>
     </div>
