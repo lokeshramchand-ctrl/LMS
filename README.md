@@ -134,4 +134,6 @@ MIT License © 2025 **Lokesh Ram Chand Bazaru**
 🎯 This **LMS** is designed to **enhance online education** by integrating **AI, video conferencing, and analytics**. More **features** like **quizzes, live discussions, and gamification** can be added in future updates.
 
 🔗 **GitHub Repo:** [LMS Project](https://github.com/lokeshramchand-ctrl/lms_project)  
+🔗 **Figma File:** [Figma](https://www.figma.com/design/fmvt6S6SyGkg0ixPhgu3N8/LMS?m=auto&t=eiedjn2IqzdD5wgB-1)
+
 
