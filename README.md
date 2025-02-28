@@ -4,13 +4,12 @@
 The **Learning Management System (LMS)** is a **feature-rich** web platform that provides a **seamless learning experience** for students and teachers. It integrates **modern AI, video conferencing, authentication, and course management** into one **robust** solution.
 
 ## 🛠 **Tech Stack**
-- **Frontend:** HTML, CSS (Glassmorphism Design), JavaScript  
+- **Frontend:** React  
 - **Backend:** Django (Python)  
 - **Database:** MySQL / PostgreSQL  
 - **Authentication:** Username/Password, Face Recognition  
-- **AI Features:** Chatbot for instant student support  
+- **AI Features:** Chatbot for instant student support  (Gemini API)
 - **Video Conferencing:** Jitsi Meet API Integration  
-- **Other Tools:** Jinja Templating, D3.js for data visualization  
 
 ---
 
@@ -31,7 +30,7 @@ The **Learning Management System (LMS)** is a **feature-rich** web platform that
 ✅ **Auto-Generated Meeting Links** – Unique **meeting ID** created for each session  
 ✅ **Embedded Video Meetings** – Conduct **classes within the LMS**  
 
-### 🤖 **AI Chatbot**
+### 🤖 **GEMINI AI Chatbot**
 ✅ **24/7 Student Support** – AI chatbot helps students with queries  
 ✅ **Smart Answers** – AI suggests **courses, assignments, and deadlines**  
 ✅ **Natural Language Processing (NLP)**  
@@ -39,13 +38,14 @@ The **Learning Management System (LMS)** is a **feature-rich** web platform that
 ### 📊 **Dashboard & Analytics**
 ✅ **Bento Box UI** – Beautiful dashboard layout  
 ✅ **Course Statistics** – Number of enrolled students, assignment submissions  
-✅ **Graphical Data Representation** – **D3.js** for interactive charts  
 
 ### 🔄 **User Profile & Settings**
 ✅ **Edit Profile Information**  
 ✅ **Change Password & Security Settings**  
 ✅ **Personalized Theme & Notifications**  
 
+
+### Yet to implement features 
 ### 🏆 **Gamification (Future Scope)**
 ✅ **Points & Badges** for course completion  
 ✅ **Leaderboard System** for student rankings  
