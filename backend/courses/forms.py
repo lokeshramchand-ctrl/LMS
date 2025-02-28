@@ -5,9 +5,8 @@ from .models import Enrollment, Submission
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enrollment
-        fields = []  # No additional fields; just save user and course automatically
+        fields = []  
 
-# Submission form
 class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
