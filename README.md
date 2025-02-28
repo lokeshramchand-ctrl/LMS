@@ -35,20 +35,20 @@ The **Learning Management System (LMS)** is a **feature-rich** web platform that
 ✅ **Smart Answers** – AI suggests **courses, assignments, and deadlines**  
 ✅ **Natural Language Processing (NLP)**  
 
+### Yet to implement features 
+### 🏆 **Gamification (Future Scope)**
+✅ **Points & Badges** for course completion  
+✅ **Leaderboard System** for student rankings 
+
 ### 📊 **Dashboard & Analytics**
 ✅ **Bento Box UI** – Beautiful dashboard layout  
-✅ **Course Statistics** – Number of enrolled students, assignment submissions  
+✅ **Course Statistics** – Number of enrolled students, assignment submissions   
 
 ### 🔄 **User Profile & Settings**
 ✅ **Edit Profile Information**  
 ✅ **Change Password & Security Settings**  
 ✅ **Personalized Theme & Notifications**  
 
-
-### Yet to implement features 
-### 🏆 **Gamification (Future Scope)**
-✅ **Points & Badges** for course completion  
-✅ **Leaderboard System** for student rankings  
 
 ---
 
@@ -134,4 +134,3 @@ MIT License © 2025 **Lokesh Ram Chand Bazaru**
 
 🔗 **GitHub Repo:** [LMS Project](https://github.com/lokeshramchand-ctrl/lms_project)  
 
-🔥 **Developed with ❤️ by Lokesh** 🚀
