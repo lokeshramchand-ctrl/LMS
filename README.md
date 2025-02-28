@@ -47,7 +47,8 @@ The **Learning Management System (LMS)** is a **feature-rich** web platform that
 ### 🔄 **User Profile & Settings**
 ✅ **Edit Profile Information**  
 ✅ **Change Password & Security Settings**  
-✅ **Personalized Theme & Notifications**  
+✅ **Personalized Theme & Notifications** 
+✅ **Multi-Role Authetication** 
 
 
 ---
