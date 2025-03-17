@@ -6,7 +6,6 @@ const Dashboard = () => {
     <div className="dashboard-container">
       {/* Left Floating Navbar */}
       <nav className="left-navbar">
-        /*
         <ul>
           <li>🏠 Home</li>
           <li>📚 Courses</li>
@@ -18,37 +17,28 @@ const Dashboard = () => {
       {/* Main Bento Grid Layout */}
       <div className="bento-container">
         <div className="bento-box">
-          <div className="card">
-            <div className="card1"></div>
-          </div>
+          UPGRADE DISCOUNT<br />
+          Upgrade today to enable unlimited projects.<br />
+          $12.99<br />
+          DISCOUNT CODE: G158FG35
         </div>
-        
         <div className="bento-box">
-          <div className="card">
-            <div className="card2"></div>
-          </div>
+          Urbanist typeface<br />
+          Aa
+        </div>
+        <div className="bento-box">
+          technexus
+        </div>
+        <div className="bento-box">
+          Connecting Ideas, Empowering Innovation
+        </div>
+        <div className="bento-box">
+          Connecting Ideas, Empowering Innovation
+        </div>
+        <div className="bento-box">
+          Additional content here
         </div>
 
-        <div className="bento-box">
-          <div className="card">
-            <div className="card3"></div>
-          </div>
-        </div>
-        <div className="bento-box">
-          <div className="card">
-            <div className="card4"></div>
-          </div>
-        </div>
-        <div className="bento-box">
-          <div className="card">
-            <div className="card5"></div>
-          </div>
-        </div>
-        <div className="bento-box">
-          <div className="card">
-            <div className="card6"></div>
-          </div>
-        </div>
       </div>
     </div>
   );

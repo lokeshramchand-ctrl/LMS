@@ -11,6 +11,7 @@ html {
   background-color: #d9d9d9;
   display: flex;
 }
+
 .left-navbar {
   width: 60px;
   height: 85vh; /* Slightly smaller than full height */
@@ -26,10 +27,8 @@ html {
   gap: 20px;
   border-radius: 30px;
   background: #e0e0e0;
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
   border-radius: 60px; /* Makes it float-like */
 }
-
 
 .left-navbar ul {
   list-style: none;
@@ -52,26 +51,6 @@ html {
   transform: scale(1.1);
 }
 
-.left-navbar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 80%;
-}
-
-.left-navbar li {
-  padding: 15px;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  transition: background 0.3s;
-  border-radius: 10px;
-}
-
-.left-navbar li:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
 .dashboard-container {
   margin-left: 420px; /* Adjust according to navbar width */
   width: calc(100% - 220px);
@@ -88,44 +67,38 @@ html {
 }
 
 .bento-box {
-  width: 220px;
-  height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 8px;
-
   border-radius: 30px;
   background: #e0e0e0;
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
-}
-.card1 {
-  height: 30px;
-  width: 100px;
-  grid-column: span 2 / span 2;
+  padding: 20px;
+  text-align: center;
 }
 
-.card2 {
-  height: 45px;
-  width: 185px;
-  grid-column: span 2 / span 2;
-  grid-row-start: 2;
+/* Specific styles for each box */
+.bento-box:nth-child(1) {
+  grid-column: span 2;
+  height: 150px;
 }
 
-
-.card4 {
-  grid-row: span 2 / span 2;
-  grid-row-start: 3;
+.bento-box:nth-child(2) {
+  height: 150px;
 }
 
-.card5 {
-  grid-column: span 2 / span 2;
-  grid-row: span 2 / span 2;
-  grid-row-start: 3;
+.bento-box:nth-child(3) {
+  height: 200px;
+}
+
+.bento-box:nth-child(4) {
+  height: 200px;
+}
+
+.bento-box:nth-child(5) {
+  grid-column: span 2;
+  height: 150px;
+}
+
+.bento-box:nth-child(6) {
+  height: 150px;
 }
