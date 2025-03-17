@@ -1,10 +1,10 @@
 import React from "react";
-import AuthContainer from "./Components/Auth/Auth_Container";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 function App() {
   return (
     <>
-      <AuthContainer />
+      <Dashboard />
     </>
   );
 }
