@@ -1,0 +1,83 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Global Variables */
+:root {
+  --primary: #0A0F1E;  /* Deep Dark Blue */
+  --secondary: #1A73E8;  /* Electric Blue */
+  --accent: #8E24AA;  /* Neon Purple */
+  --light: #E0E0E0;  /* Soft White for Text */
+  --dark: #0A0F1E;  /* Background */
+  --success: #00C896;  /* Neon Green (Success) */
+  --error: #FF4D6D;  /* Bright Red (Error) */
+  --shadow: 0 4px 10px rgba(26, 115, 232, 0.4); /* Blue Glow Effect */
+}
+
+/* Reset Default Styles */
+* {
+
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Global Layout */
+body {
+  background-color: var(--dark);
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+/* Main Content Container */
+.container {
+  width: 100%;
+
+}
+
+/* Neon Buttons */
+.neon-btn {
+  background: linear-gradient(90deg, var(--secondary), var(--accent));
+  color: var(--light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(26, 115, 232, 0.6);
+}
+
+.neon-btn:hover {
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  box-shadow: 0 0 15px rgba(142, 36, 170, 0.8);
+}
+
+/* Neon Input Fields */
+.input-field {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--light);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(142, 36, 170, 0.7);
+}
+
+/* Hyperlinks */
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}

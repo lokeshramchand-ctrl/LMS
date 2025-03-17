@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boho Learn - Modern LMS Platform</title>
+  <style>
+    :root {
+      --primary: #a86a3e;
+      --secondary: #e3bc9a;
+      --accent: #d4a373;
+      --light: #f5ebe0;
+      --dark: #5e503f;
+      --success: #606c38;
+      --error: #9e2a2b;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Auth Pages */
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url('/api/placeholder/1200/800') center/cover no-repeat;
+      position: relative;
+    }
+    
+    .auth-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(245, 235, 224, 0.8);
+      z-index: 1;
+    }
+    
+    .auth-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 450px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .auth-tab {
+      padding: 0.75rem;
+      flex: 1;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .auth-tab.active {
+      border-bottom: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .auth-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .auth-form-group label {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .auth-form-group input {
+      padding: 0.75rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+    
+    .auth-form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .auth-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    
+    .auth-btn:hover {
+      background-color: var(--accent);
+    }
+    
+    .auth-form-footer {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    .auth-form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    /* Dashboard */
+    .dashboard {
+      display: none; /* Initially hidden */
+      min-height: 100vh;
+    }
+    
+    .navbar {
+      background-color: white;
+      box-shadow: var(--shadow);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .user-menu {
+      position: relative;
+    }
+    
+    .user-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+    
+    .dashboard-content {
+      padding: 2rem 0;
+    }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stats-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .stats-card-title {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .stats-card-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .dashboard-section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .course-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .course-img {
+      height: 150px;
+      background-color: var(--secondary);
+    }
+    
+    .course-content {
+      padding: 1rem;
+    }
+    
+    .course-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .course-instructor {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+    
+    .course-progress {
+      height: 6px;
+      background-color: #e0e0e0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: var(--success);
+      border-radius: 3px;
+    }
+    
+    /* Calendar */
+    .calendar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .calendar-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    .calendar-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .calendar-btn {
+      padding: 0.5rem 1rem;
+      background-color: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .calendar-btn:hover {
+      background-color: var(--light);
+    }
+    
+    .calendar-btn.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+    }
+    
+    .calendar-day-header {
+      text-align: center;
+      font-weight: 500;
+      padding: 0.5rem;
+    }
+    
+    .calendar-day {
+      min-height: 80px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .day-number {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .event {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background-color: var(--accent);
+      color: white;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .event.zoom {
+      background-color: #0e71eb;
+    }
+    
+    .event.assignment {
+      background-color: var(--error);
+    }
+    
+    /* Zoom Meetings */
+    .meetings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .meeting-card {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      align-items: center;
+    }
+    
+    .meeting-status {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #0e71eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 500;
+    }
+    
+    .meeting-info {
+      flex: 1;
+    }
+    
+    .meeting-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .meeting-time {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .join-btn {
+      padding: 0.5rem 1rem;
+      background-color: #0e71eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    /* Main Content Tabs */
+    .content-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    
+    .content-tab {
+      padding: 0.75rem 1.5rem;
+      background-color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      box-shadow: var(--shadow);
+    }
+    
+    .content-tab.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .content-panel {
+      display: none;
+    }
+    
+    .content-panel.active {
+      display: block;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .calendar-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      
+      .calendar-day-header {
+        display: none;
+      }
+      
+      .calendar-day {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .day-number {
+        min-width: 30px;
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Authentication Container (Login/Signup) -->
+  <div class="auth-container" id="authContainer">
+    <div class="auth-box">
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="loginTab">Login</div>
+        <div class="auth-tab" id="signupTab">Sign Up</div>
+      </div>
+      
+      <!-- Login Form -->
+      <form class="auth-form" id="loginForm">
+        <div class="auth-form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required placeholder="your@email.com">
+        </div>
+        <div class="auth-form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <label>
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0
+          <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">Forgot password?</a>
+        </div>
+        <button type="button" class="auth-btn" id="loginButton">Login</button>
+        <div class="auth-form-footer">
+          Don't have an account? <a href="#" id="switchToSignup">Sign up</a>
+        </div>
+      </form>
+      
+      <!-- Signup Form (hidden by default) -->
+      <form class="auth-form" id="signupForm" style="display: none;">
+        <div class="auth-form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" required placeholder="Your Name">
+        </div>
+        <div class="auth-form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" required placeholder="your@email.com">
+        </div>
+        <div class="auth-form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" required placeholder="••••••••">
+        </div>
+        <div class="auth-form-group">
+          <label for="signupConfirmPassword">Confirm Password</label>
+          <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
+        </div>
+        <button type="button" class="auth-btn" id="signupButton">Create Account</button>
+        <div class="auth-form-footer">
+          Already have an account? <a href="#" id="switchToLogin">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Dashboard (hidden by default) -->
+  <div class="dashboard" id="dashboardContainer">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="container navbar-container">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          <span>BohoLearn</span>
+        </div>
+        
+        <ul class="nav-links">
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#courses">My Courses</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#meetings">Meetings</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
+        
+        <div class="user-menu">
+          <div class="user-trigger">
+            <div class="avatar">JS</div>
+            <span>Jane Smith</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Dashboard Content -->
+    <div class="dashboard-content container">
+      <div class="content-tabs">
+        <div class="content-tab active" data-tab="overview">Overview</div>
+        <div class="content-tab" data-tab="courses">My Courses</div>
+        <div class="content-tab" data-tab="calendar">Calendar</div>
+        <div class="content-tab" data-tab="meetings">Zoom Meetings</div>
+        <div class="content-tab" data-tab="resources">Resources</div>
+      </div>
+      
+      <!-- Overview Panel -->
+      <div class="content-panel active" id="overviewPanel">
+        <div class="dashboard-grid">
+          <div class="stats-card">
+            <div class="stats-card-title">Active Courses</div>
+            <div class="stats-card-value">6</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-card-title">Upcoming Meetings</div>
+            <div class="stats-card-value">3</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-card-title">Assignments Due</div>
+            <div class="stats-card-value">2</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-card-title">Overall Progress</div>
+            <div class="stats-card-value">68%</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div class="section-title">Continue Learning</div>
+            <a href="#" style="color: var(--primary); text-decoration: none;">See all courses</a>
+          </div>
+          
+          <div class="course-grid">
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Introduction to Digital Marketing</div>
+                <div class="course-instructor">by Sarah Johnson</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Web Development Fundamentals</div>
+                <div class="course-instructor">by Michael Chen</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 45%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Advanced Data Analysis</div>
+                <div class="course-instructor">by Elena Patel</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div class="section-title">Upcoming Meetings</div>
+            <a href="#" style="color: var(--primary); text-decoration: none;">View all meetings</a>
+          </div>
+          
+          <div class="meetings-list">
+            <div class="meeting-card">
+              <div class="meeting-status">
+                ZOOM
+              </div>
+              <div class="meeting-info">
+                <div class="meeting-title">Digital Marketing Strategy Session</div>
+                <div class="meeting-time">Today, 2:00 PM - 3:30 PM</div>
+              </div>
+              <button class="join-btn">Join Now</button>
+            </div>
+            
+            <div class="meeting-card">
+              <div class="meeting-status">
+                ZOOM
+              </div>
+              <div class="meeting-info">
+                <div class="meeting-title">Web Development Workshop</div>
+                <div class="meeting-time">Tomorrow, 10:00 AM - 12:00 PM</div>
+              </div>
+              <button class="join-btn">Join Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Courses Panel -->
+      <div class="content-panel" id="coursesPanel">
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div class="section-title">My Courses</div>
+            <div>
+              <input type="text" placeholder="Search courses..." style="padding: 0.5rem; border-radius: 6px; border: 1px solid #e0e0e0;">
+            </div>
+          </div>
+          
+          <div class="course-grid">
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Introduction to Digital Marketing</div>
+                <div class="course-instructor">by Sarah Johnson</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Web Development Fundamentals</div>
+                <div class="course-instructor">by Michael Chen</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 45%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Advanced Data Analysis</div>
+                <div class="course-instructor">by Elena Patel</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Content Creation Masterclass</div>
+                <div class="course-instructor">by James Wilson</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 60%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Social Media Strategy</div>
+                <div class="course-instructor">by Lisa Thompson</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 35%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-card">
+              <div class="course-img"></div>
+              <div class="course-content">
+                <div class="course-title">Photography Fundamentals</div>
+                <div class="course-instructor">by David Kim</div>
+                <div class="course-progress">
+                  <div class="progress-bar" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Calendar Panel -->
+      <div class="content-panel" id="calendarPanel">
+        <div class="dashboard-section calendar-section">
+          <div class="calendar-header">
+            <div class="calendar-title">March 2025</div>
+            <div class="calendar-actions">
+              <button class="calendar-btn">Today</button>
+              <button class="calendar-btn">&lt;</button>
+              <button class="calendar-btn">&gt;</button>
+              <button class="calendar-btn active">Month</button>
+              <button class="calendar-btn">Week</button>
+              <button class="calendar-btn">Day</button>
+              <button class="calendar-btn">+ New Event</button>
+            </div>
+          </div>
+          
+          <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+            
+            <!-- Week 1 -->
+            <div class="calendar-day">
+              <div class="day-number">1</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">2</div>
+              <div class="event">Assignment Due</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">3</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">4</div>
+              <div class="event zoom">Marketing Meeting</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">5</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">6</div>
+              <div class="event">Quiz Due</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">7</div>
+            </div>
+            
+            <!-- Week 2 -->
+            <div class="calendar-day">
+              <div class="day-number">8</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">9</div>
+              <div class="event zoom">Development Workshop</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">10</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">11</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">12</div>
+              <div class="event assignment">Project Due</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">13</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">14</div>
+            </div>
+            
+            <!-- Week 3 -->
+            <div class="calendar-day">
+              <div class="day-number">15</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">16</div>
+              <div class="event">Today</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">17</div>
+              <div class="event zoom">Group Discussion</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">18</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">19</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">20</div>
+              <div class="event assignment">Essay Due</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">21</div>
+            </div>
+            
+            <!-- Weeks 4-5 (simplified for brevity) -->
+            <div class="calendar-day">
+              <div class="day-number">22</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">23</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">24</div>
+              <div class="event zoom">Final Review</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">25</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">26</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">27</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">28</div>
+            </div>
+            
+            <div class="calendar-day">
+              <div class="day-number">29</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">30</div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">31</div>
+            </div>
+            <div class="calendar-day
+            <div class="calendar-day">
+                <div class="day-number">31</div>
+              </div>
+              <div class="calendar-day">
+                <div class="day-number"></div>
+              </div>
+              <div class="calendar-day">
+                <div class="day-number"></div>
+              </div>
+              <div class="calendar-day">
+                <div class="day-number"></div>
+              </div>
+              <div class="calendar-day">
+                <div class="day-number"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Meetings Panel -->
+        <div class="content-panel" id="meetingsPanel">
+          <div class="dashboard-section">
+            <div class="section-header">
+              <div class="section-title">Zoom Meetings</div>
+              <button class="calendar-btn">+ Schedule Meeting</button>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+              <button class="calendar-btn active">Upcoming</button>
+              <button class="calendar-btn">Past</button>
+              <button class="calendar-btn">Hosted by Me</button>
+            </div>
+            
+            <div class="meetings-list">
+              <div class="meeting-card">
+                <div class="meeting-status">
+                  ZOOM
+                </div>
+                <div class="meeting-info">
+                  <div class="meeting-title">Digital Marketing Strategy Session</div>
+                  <div class="meeting-time">Today, 2:00 PM - 3:30 PM</div>
+                  <div style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    <strong>Host:</strong> Sarah Johnson • <strong>Meeting ID:</strong> 857 2439 6584 • <strong>Passcode:</strong> 123456
+                  </div>
+                </div>
+                <button class="join-btn">Join Now</button>
+              </div>
+              
+              <div class="meeting-card">
+                <div class="meeting-status">
+                  ZOOM
+                </div>
+                <div class="meeting-info">
+                  <div class="meeting-title">Web Development Workshop</div>
+                  <div class="meeting-time">Tomorrow, 10:00 AM - 12:00 PM</div>
+                  <div style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    <strong>Host:</strong> Michael Chen • <strong>Meeting ID:</strong> 924 5712 8396 • <strong>Passcode:</strong> 654321
+                  </div>
+                </div>
+                <button class="join-btn">Join Now</button>
+              </div>
+              
+              <div class="meeting-card">
+                <div class="meeting-status">
+                  ZOOM
+                </div>
+                <div class="meeting-info">
+                  <div class="meeting-title">Group Discussion: Advanced Data Analysis</div>
+                  <div class="meeting-time">Mar 17, 1:00 PM - 2:30 PM</div>
+                  <div style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    <strong>Host:</strong> Elena Patel • <strong>Meeting ID:</strong> 638 1947 5023 • <strong>Passcode:</strong> 789012
+                  </div>
+                </div>
+                <button class="join-btn">Join Now</button>
+              </div>
+              
+              <div class="meeting-card">
+                <div class="meeting-status">
+                  ZOOM
+                </div>
+                <div class="meeting-info">
+                  <div class="meeting-title">Final Review Session</div>
+                  <div class="meeting-time">Mar 24, 3:00 PM - 5:00 PM</div>
+                  <div style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    <strong>Host:</strong> James Wilson • <strong>Meeting ID:</strong> 742 8503 1659 • <strong>Passcode:</strong> 345678
+                  </div>
+                </div>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Resources Panel -->
+        <div class="content-panel" id="resourcesPanel">
+          <div class="dashboard-section">
+            <div class="section-header">
+              <div class="section-title">Learning Resources</div>
+              <div>
+                <input type="text" placeholder="Search resources..." style="padding: 0.5rem; border-radius: 6px; border: 1px solid #e0e0e0;">
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+              <div class="stats-card">
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">PDF Documents</div>
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Access course materials, guides, and reference sheets</div>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 500;">View All Documents</a>
+              </div>
+              
+              <div class="stats-card">
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Video Tutorials</div>
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Watch step-by-step guides and recorded sessions</div>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 500;">Browse Videos</a>
+              </div>
+              
+              <div class="stats-card">
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Assignment Templates</div>
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Download templates for your assignments</div>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 500;">Get Templates</a>
+              </div>
+              
+              <div class="stats-card">
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Discussion Forums</div>
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Connect with peers and instructors</div>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 500;">Join Discussions</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-section">
+            <div class="section-header">
+              <div class="section-title">Recently Accessed</div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background-color: #f9f9f9; border-radius: 10px;">
+                <div style="width: 40px; height: 40px; background-color: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">PDF</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500;">Digital Marketing Strategy Guide</div>
+                  <div style="font-size: 0.9rem; color: #666;">Accessed 2 days ago</div>
+                </div>
+                <button style="padding: 0.5rem 1rem; background-color: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Download</button>
+              </div>
+              
+              <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background-color: #f9f9f9; border-radius: 10px;">
+                <div style="width: 40px; height: 40px; background-color: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">VID</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500;">Web Development Basics: HTML & CSS</div>
+                  <div style="font-size: 0.9rem; color: #666;">Accessed 3 days ago</div>
+                </div>
+                <button style="padding: 0.5rem 1rem; background-color: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Watch</button>
+              </div>
+              
+              <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background-color: #f9f9f9; border-radius: 10px;">
+                <div style="width: 40px; height: 40px; background-color: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">DOC</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500;">Data Analysis Project Template</div>
+                  <div style="font-size: 0.9rem; color: #666;">Accessed 1 week ago</div>
+                </div>
+                <button style="padding: 0.5rem 1rem; background-color: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Download</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Simple JS for tab functionality
+      // In a real implementation, this should be expanded with proper authentication
+      
+      // Auth tab switching
+      document.getElementById('loginTab').addEventListener('click', function() {
+        document.getElementById('loginTab').classList.add('active');
+        document.getElementById('signupTab').classList.remove('active');
+        document.getElementById('loginForm').style.display = 'flex';
+        document.getElementById('signupForm').style.display = 'none';
+      });
+      
+      document.getElementById('signupTab').addEventListener('click', function() {
+        document.getElementById('signupTab').classList.add('active');
+        document.getElementById('loginTab').classList.remove('active');
+        document.getElementById('signupForm').style.display = 'flex';
+        document.getElementById('loginForm').style.display = 'none';
+      });
+      
+      document.getElementById('switchToSignup').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('signupTab').click();
+      });
+      
+      document.getElementById('switchToLogin').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('loginTab').click();
+      });
+      
+      // Mock login functionality
+      document.getElementById('loginButton').addEventListener('click', function() {
+        document.getElementById('authContainer').style.display = 'none';
+        document.getElementById('dashboardContainer').style.display = 'block';
+      });
+      
+      document.getElementById('signupButton').addEventListener('click', function() {
+        document.getElementById('authContainer').style.display = 'none';
+        document.getElementById('dashboardContainer').style.display = 'block';
+      });
+      
+      // Dashboard content tabs
+      const contentTabs = document.querySelectorAll('.content-tab');
+      const contentPanels = document.querySelectorAll('.content-panel');
+      
+      contentTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const targetPanel = this.getAttribute('data-tab') + 'Panel';
+          
+          // Update active tab
+          contentTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show target panel, hide others
+          contentPanels.forEach(panel => {
+            panel.classList.remove('active');
+            if (panel.id === targetPanel) {
+              panel.classList.add('active');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+  </html>

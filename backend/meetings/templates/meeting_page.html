@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Meeting</title>
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #meet {
+            width: 100%;
+            height: 90vh;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <!-- Jitsi Meeting Container -->
+    <div id="meet"></div>
+
+    <script>
+        // Jitsi Meet API Configuration
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "{{ meeting_id }}",  // Meeting ID from Django
+            width: "100%",
+            height: "100%",
+            parentNode: document.querySelector("#meet"),
+            configOverwrite: {
+                prejoinPageEnabled: false,  // Skips pre-join page
+                startWithAudioMuted: false,
+                startWithVideoMuted: false,
+                disableInviteFunctions: true  // Disables invite button
+            },
+            interfaceConfigOverwrite: {
+                SHOW_PROMOTIONAL_CLOSE_PAGE: false,  // Prevents Jitsi’s landing page after exit
+            },
+            userInfo: {
+                displayName: "{{ user.username }}"  // Shows user's name from LMS
+            }
+        };
+
+        const api = new JitsiMeetExternalAPI(domain, options);
+
+        // Ensure first user becomes moderator (password protection)
+        api.addEventListener("participantJoined", (event) => {
+            if (event.id === api.getParticipantsInfo()[0].id) {
+                api.executeCommand("password", "yourSecurePassword");
+            }
+        });
+
+    </script>
+
+</body>
+</html>
