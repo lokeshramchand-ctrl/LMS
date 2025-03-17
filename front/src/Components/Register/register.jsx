@@ -7,7 +7,6 @@ const Register = () => {
   const [captureImage, setCaptureImage] = useState(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true })
