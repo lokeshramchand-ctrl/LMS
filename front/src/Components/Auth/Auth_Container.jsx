@@ -5,7 +5,6 @@ import './auth.css';
 
 const AuthContainer = () => {
   const [activeTab, setActiveTab] = useState('login');
-
   return (
     <div className="auth-container">
       <div className="auth-box">
