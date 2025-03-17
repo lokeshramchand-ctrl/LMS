@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+
+/* Color Variables */
+:root {
+    --primary: #0A0F1E; /* Deep Dark Blue */
+    --secondary: #1A73E8; /* Electric Blue */
+    --accent: #8E24AA; /* Neon Purple */
+    --light: #E0E0E0; /* Soft White for Text */
+    --dark: #0A0F1E; /* Background */
+    --success: #00C896; /* Neon Green */
+    --error: #FF4D6D; /* Bright Red */
+    --shadow: 0 4px 10px rgba(26, 115, 232, 0.4); /* Blue Glow */
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle, rgba(11, 50, 166, 0.6), rgba(223, 15, 209, 0.3), rgba(26, 115, 232, 0.2));
+  background-size: 300% 300%;
+  background-attachment: fixed;
+  display: flex;
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+.left-navbar {
+  width: 60px;
+  height: 85vh; /* Slightly smaller than full height */
+  position: fixed;
+  top: 50%;
+  left: 50px; /* Distance from the left */
+  transform: translateY(-50%); /* Centering vertically */
+  padding: 15px; /* Better spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 60px; /* Makes it float-like */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(60px);
+  border-radius: 60px;
+  box-shadow: 15px 15px 25px rgb(260, 0, 255);
+}
+.nav-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-button:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.nav-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+}
+
+/* Ensure the navbar items are properly spaced */
+.left-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 70px; /* Adjust spacing between icons */
+}
+.left-navbar li {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 10px;
+  color: var(--light);
+}
+
+.left-navbar li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.dashboard-container {
+  margin-left: 120px; /* Adjusted to move bento box left */
+  width: calc(100% - 140px); /* Adjusted to fit within screen */
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* Prevent overflow */
+  
+}
+
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%; /* Ensure it fits within the container */
+  max-width: 1200px; /* Restrict maximum width */
+  
+}
+
+.bento-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(60px);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  text-align: center;
+  color: var(--light);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(60px);
+  border-radius: 60px;
+  box-shadow: 15px 15px 25px rgb(260, 0, 255);
+}
+
+/* Specific styles for each box */
+.bento-box:nth-child(1) {
+  grid-column: span 2;
+  height: 150px;
+}
+
+.bento-box:nth-child(2) {
+  height: 150px;
+}
+
+.bento-box:nth-child(3) {
+  height: 200px;
+}
+
+.bento-box:nth-child(4) {
+  height: 200px;
+}
+
+.bento-box:nth-child(5) {
+  grid-column: span 2;
+  height: 150px;
+}
+
+.bento-box:nth-child(6) {
+  height: 150px;
+}

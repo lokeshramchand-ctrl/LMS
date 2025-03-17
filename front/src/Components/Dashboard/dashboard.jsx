@@ -1,16 +1,46 @@
 import React from "react";
-import "./dashboar.css";
+import "./dashboard.css";
+import HomeIcon from "./icons/home.png";
+import CoursesIcon from "./icons/book-alt.png";
+import AssignmentsIcon from "./icons/search.png";
+import ProfileIcon from "./icons/user.png";
+import Megaphone from "./icons/megaphone.png";
+import VideoCall from "./icons/video-camera-alt.png";
 
+
+ 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
       {/* Left Floating Navbar */}
       <nav className="left-navbar">
         <ul>
-          <li>🏠 Home</li>
-          <li>📚 Courses</li>
-          <li>📝 Assignments</li>
-          <li>⚙️ Settings</li>
+          <li>
+            <button className="nav-button">
+              <img src={HomeIcon} alt="Home" className="nav-icon" />
+            </button>
+          </li>
+          <li>
+            <button className="nav-button">
+              <img src={CoursesIcon} alt="Courses" className="nav-icon" />
+            </button>
+          </li>
+          <li>
+            <button className="nav-button">
+              <img src={AssignmentsIcon} alt="Assignments" className="nav-icon" />
+            </button>
+          </li>
+          <li>
+            <button className="nav-button">
+              <img src={VideoCall} alt="Video" className="nav-icon" />
+            </button>
+          </li>
+          <li>
+            <button className="nav-button">
+              <img src={ProfileIcon} alt="Profile" className="nav-icon" />
+            </button>
+          </li>
+
         </ul>
       </nav>
 
@@ -38,7 +68,6 @@ const Dashboard = () => {
         <div className="bento-box">
           Additional content here
         </div>
-
       </div>
     </div>
   );
