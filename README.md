@@ -1,4 +1,4 @@
-# **📚 Learning Management System (LMS)**  
+# **📚 Learning Management System (LMS)** 
 
 ## 🚀 **Project Overview**  
 The **Learning Management System (LMS)** is a **feature-rich** web platform that provides a **seamless learning experience** for students and teachers. It integrates **modern AI, video conferencing, authentication, and course management** into one **robust** solution.
