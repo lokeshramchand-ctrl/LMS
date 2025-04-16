@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: white; /* ✅ Ensures entire page is pure white */
+  display: flex;
+  overflow-x: hidden;
+}
+.dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white; /* ✅ Ensures whole page background is white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+/* Navbar Container */
+.left-navbar {
+  width: auto;
+  height: 70px;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  border-radius: 40px;
+  background: white; /* ✨ Changed from translucent blur to solid white */
+  backdrop-filter: none; /* ✨ Removed blur effect */
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.05); /* ✨ Softer, subtle shadow */
+  z-index: 1000;
+}
+
+/* Navigation Button */
+.nav-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+/* Icon inside Button */
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Horizontal list */
+.left-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+/* Individual nav item */
+.left-navbar li {
+  width: auto;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 10px;
+  color: black; /* ✨ Changed from white to black */
+}
+
+.left-navbar li:hover {
+  background: #f0f0f0; /* ✨ Light hover effect for white background */
+  transform: scale(1.1);
+}

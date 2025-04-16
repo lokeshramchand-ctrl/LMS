@@ -1,10 +1,10 @@
 import React from "react";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Layout from "./Components/Layout/layout";
 
 function App() {
   return (
     <>
-      <Dashboard/>
+      <Layout/>
     </>
   );
 }
