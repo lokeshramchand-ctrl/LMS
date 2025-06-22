@@ -396,20 +396,6 @@ git push origin feature/innovative-learning-feature
 - 🌟 **Outstanding AI Integration** - AI in Education Conference 2024
 - 🏆 **Technical Excellence** - Django Developers Summit 2024
 
-## 📞 **Community & Support**
-
-<div align="center">
-
-[![Documentation](https://img.shields.io/badge/📖-Documentation-6366f1?style=for-the-badge)](https://docs.educore-lms.com)
-[![API Docs](https://img.shields.io/badge/🔧-API%20Reference-00D084?style=for-the-badge)](https://api.educore-lms.com/docs)
-[![Discord](https://img.shields.io/badge/💬-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/educore)
-[![YouTube](https://img.shields.io/badge/📺-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/educore)
-
-</div>
-
-## 📄 **License**
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 **Acknowledgments**
 
@@ -421,18 +407,9 @@ Special thanks to the incredible teams behind Django, React, Google AI (Gemini),
 
 <div align="center">
 
-### 🎓 **Empowering Education Through Technology**
-
-[![GitHub stars](https://img.shields.io/github/stars/lokeshramchand-ctrl/lms_project?style=social&label=⭐%20Star%20EduCore)](https://github.com/lokeshramchand-ctrl/lms_project/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/lokeshramchand-ctrl/lms_project?style=social&label=🍴%20Fork%20EduCore)](https://github.com/lokeshramchand-ctrl/lms_project/network/members)
-[![GitHub watchers](https://img.shields.io/github/watchers/lokeshramchand-ctrl/lms_project?style=social&label=👀%20Watch%20EduCore)](https://github.com/lokeshramchand-ctrl/lms_project/watchers)
 
 **🤖 Powered by Gemini AI • 🎨 Built with React & Django • 👤 Secured by Biometrics**
 
-[⬆️ **Back to Top**](#-educore-lms)
 
-</div>
-🔗 **GitHub Repo:** [LMS Project](https://github.com/lokeshramchand-ctrl/lms_project)  
-🔗 **Figma File:** [ Figma](https://www.figma.com/design/fmvt6S6SyGkg0ixPhgu3N8/LMS?m=auto&t=eiedjn2IqzdD5wgB-1)
 
 
